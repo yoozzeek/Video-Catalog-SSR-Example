@@ -9,4 +9,5 @@ services:
       PORT: "3000"
     volumes:
       - ./pages:/usr/src/app/pages
-      - ./shared:/usr/src/app/shared
+      - ./components:/usr/src/app/components
+      - ./styles:/usr/src/app/styles
