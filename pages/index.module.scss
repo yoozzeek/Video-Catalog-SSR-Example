@@ -1,0 +1,8 @@
+@import "../styles/variables";
+
+.VideosList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $containerPadding;
+  background-color: $gray1;
+}
