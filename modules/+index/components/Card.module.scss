@@ -1,0 +1,34 @@
+@import "../../../styles/variables";
+
+.Wrapper {
+  flex: 1;
+  min-width: 240px;
+  overflow: hidden;
+  margin: $baseIdent;
+}
+
+.ImageContainer {
+  margin: 0;
+}
+
+.Meta {
+  padding: $baseIdent 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.MoreInfo {
+  width: 100%;
+  background-color: $gray3;
+  border-radius: $baseBorderRadius;
+  color: $white;
+  padding: $baseIdent;
+  outline: 0;
+  border: none;
+}
