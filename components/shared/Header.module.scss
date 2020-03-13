@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.Wrapper {
+  padding: $containerPadding;
+  background-color: $gray1;
+}
+
+.Label {
+  margin: 0;
+  font-size: 2.8rem;
+  line-height: 3.5rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+
+  @include textShadow();
+}
