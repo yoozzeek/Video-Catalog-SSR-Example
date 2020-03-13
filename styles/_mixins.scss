@@ -1,0 +1,5 @@
+@import "variables";
+
+@mixin textShadow() {
+  text-shadow: 0 4px 4px rgba($black, 0.25);
+}

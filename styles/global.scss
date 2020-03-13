@@ -1,0 +1,9 @@
+@import "~normalize.css";
+@import "variables";
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: $white;
+  background-color: $black;
+}
