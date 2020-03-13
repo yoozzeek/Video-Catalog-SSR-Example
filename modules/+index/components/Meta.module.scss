@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+
+.Wrapper {
+  padding: $containerPadding;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Label {
+  margin: 0;
+  font-weight: lighter;
+}
+
+.Term {
+  text-transform: uppercase;
+}
+
+.Total {
+
+}
