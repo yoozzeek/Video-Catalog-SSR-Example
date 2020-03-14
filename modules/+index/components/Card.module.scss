@@ -3,27 +3,90 @@
 .Wrapper {
   flex: 1;
   min-width: 240px;
-  overflow: hidden;
-  margin: $baseIdent;
+  padding: $baseIdent;
+
+  &.DetailsCollapsed {
+    background-color: $black;
+    border: 2px solid $red;
+
+    .ContentWrapper {
+
+    }
+
+    .Content {
+      position: absolute;
+      margin: $baseIdent;
+      padding: $baseIdent;
+      background-color: $black;
+      border: 2px solid $red;
+      display: block;
+      left: 0;
+    }
+
+    .Meta {
+      margin-bottom: 30px;
+      flex-direction: column;
+
+      li {
+        margin-top: 14px;
+      }
+
+      .Added,
+      .Duration {
+        font-size: $baseFontSize;
+        line-height: $baseLineHeight;
+      }
+
+      .Source {
+        display: block;
+      }
+    }
+  }
 }
 
 .ImageContainer {
   margin: 0;
 }
 
+.ContentWrapper {
+
+}
+
+.Content {
+
+}
+
 .Meta {
   padding: $baseIdent 0;
   display: flex;
   justify-content: space-between;
+  list-style: none;
+  margin: 0;
+
+  .Added,
+  .Duration {
+    font-size: $smallFontSize;
+    line-height: $smallLineHeight;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  .Source {
+    display: none;
+  }
 }
 
 .Description {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin: 0;
 }
 
 .MoreInfo {
+  margin: $baseIdent 0;
   width: 100%;
   background-color: $gray3;
   border-radius: $baseBorderRadius;
