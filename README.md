@@ -1,5 +1,5 @@
 # Video results
-Test project for video portal written with Nuxt.js framework. It's ready to work in production,
+Test project of video portal written with Next.js (based on React) framework. It's ready to work in production,
 many enterprise companies like Twitch, Nike and etc use similar tech stack.<br>
 
 ### Run in dev mode
