@@ -5,6 +5,15 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
+  align-items: center;
+
+  &.Wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.Label {
+  margin-right: 0.5rem;
 }
 
 .Tag {
