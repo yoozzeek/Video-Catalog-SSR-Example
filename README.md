@@ -5,3 +5,7 @@ many enterprise companies like Twitch, Nike and etc use similar tech stack.<br>
 ### Run in dev mode
 You can start development server in local machine: `npm run dev`<br>
 If you want to use Docker, run in your console `docker-compose up --build`
+
+### Build production
+1. Build static files and server logic: `npm run build`<br>
+2. Run server: `npm run start`
