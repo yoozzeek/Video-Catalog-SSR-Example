@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './CardSlider.module.scss'
-import { IItemPicture } from '../../../pages/api/search'
+import { IItemPicture } from '../interfaces'
+import { IndexContext } from '../../../pages'
 
 interface ICardSliderProps {
+  itemId: number
   pictures: IItemPicture[]
 }
 
-const CardSlider: React.FC<ICardSliderProps> = ({ pictures }) => {
+const CardSlider: React.FC<ICardSliderProps> = ({ itemId, pictures }) => {
+  const indexContext = useContext(IndexContext)
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [picture, setPicture] = useState(
     pictures[currentSlideIndex]
       ? pictures[currentSlideIndex]
       : { id: 0, path: '' }
   )
-  const [slideShowIsRunning, setSlideShowIsRunning] = useState(false)
+  const slideShowIsRunning = indexContext.launchedSlideShowId === itemId
 
   useEffect(() => {
     let interval
@@ -43,7 +46,7 @@ const CardSlider: React.FC<ICardSliderProps> = ({ pictures }) => {
   }, [currentSlideIndex])
 
   function startSlideShow() {
-    setSlideShowIsRunning(!slideShowIsRunning)
+    indexContext.setLaunchedSlideShowId(itemId)
   }
 
   return (
@@ -56,4 +59,4 @@ const CardSlider: React.FC<ICardSliderProps> = ({ pictures }) => {
   )
 }
 
-export default CardSlider
+export default React.memo(CardSlider)
