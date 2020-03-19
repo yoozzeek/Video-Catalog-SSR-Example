@@ -1,4 +1,11 @@
-import React, { MutableRefObject, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  MutableRefObject,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import styles from './Card.module.scss'
 import { IItem } from '../interfaces'
 import { IndexContext } from '../../../pages'
@@ -11,30 +18,31 @@ interface IVideoCardProps {
 
 const Card: React.FC<IVideoCardProps> = ({ item }) => {
   const indexContext = useContext(IndexContext)
-  const [contentHeight, setContentHeight] = useState(0)
+  const [contentHeight, setContentHeight] = useState<number>(0)
   const isCollapsedDetails = useMemo(
     () => indexContext.collapsedCardId === item.id,
     [indexContext.collapsedCardId]
   )
 
   // Elements refs
-  const descriptionEl = useRef(null)
-  const tagsEl = React.createRef<HTMLDivElement>()
+  const descriptionRef = useRef(null)
+  const tagsRef = React.createRef<HTMLDivElement>()
+  const pornstarsRef = React.createRef<HTMLDivElement>()
+  const webcamsRef = React.createRef<HTMLDivElement>()
 
   useEffect(() => {
     if (isCollapsedDetails) {
-      const totalHeight = [descriptionEl, tagsEl].reduce(
-        (memo: number, el: MutableRefObject<HTMLElement>) => {
-          memo += el.current.offsetHeight + el.current.offsetTop
+      const totalHeight = [descriptionRef, tagsRef, webcamsRef, pornstarsRef]
+        .filter(el => el.current)
+        .reduce((memo: number, el: MutableRefObject<HTMLElement>) => {
+          memo += el.current.offsetHeight
           return memo
-        },
-        0
-      )
+        }, 21)
 
       setContentHeight(totalHeight)
-    } else {
-      setContentHeight(0)
     }
+
+    // setContentHeight(0)
   }, [isCollapsedDetails])
 
   const cardClasses = `${styles.Wrapper} ${
@@ -42,11 +50,13 @@ const Card: React.FC<IVideoCardProps> = ({ item }) => {
   }`
 
   function collapseDetails() {
-    indexContext.setCollapsedCardId(item.id)
+    indexContext.setCollapsedCardId(isCollapsedDetails ? null : item.id)
   }
 
   return (
     <article className={cardClasses}>
+      <i className={styles.CloseButton} onClick={collapseDetails} />
+
       <div className={styles.ImageContainer}>
         <CardSlider itemId={item.id} pictures={item.picture} />
 
@@ -66,19 +76,37 @@ const Card: React.FC<IVideoCardProps> = ({ item }) => {
       <div
         className={styles.ContentWrapper}
         style={{
-          height: contentHeight ? contentHeight : 'auto',
+          height: isCollapsedDetails ? contentHeight : 'auto',
         }}
       >
         <div className={styles.Content}>
-          <p ref={descriptionEl} className={styles.Description}>
-            {isCollapsedDetails && <strong>Description</strong>}{' '}
+          <p ref={descriptionRef} className={styles.Description}>
+            {isCollapsedDetails && <strong>Description:</strong>}{' '}
             {item.description}
           </p>
 
           <CardTags
-            ref={tagsEl}
+            ref={tagsRef}
             tags={item.tag}
             isCollapsedDetails={isCollapsedDetails}
+          />
+
+          <CardTags
+            ref={pornstarsRef}
+            tags={item.pornstar}
+            isCollapsedDetails={true}
+            isHidden={!(isCollapsedDetails && item.pornstar.length)}
+            color="primary"
+            label="Pornstars:"
+          />
+
+          <CardTags
+            ref={webcamsRef}
+            tags={item.webcam}
+            isCollapsedDetails={true}
+            isHidden={!(isCollapsedDetails && item.webcam.length)}
+            color="success"
+            label="Webcam Models:"
           />
         </div>
       </div>
