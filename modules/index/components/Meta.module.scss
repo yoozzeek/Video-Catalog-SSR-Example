@@ -1,9 +1,10 @@
 @import "../../../styles/variables";
 
 .Wrapper {
-  padding: $containerPadding;
   display: flex;
   justify-content: space-between;
+  padding: $containerIdent;
+  background-color: $black;
 }
 
 .Label {
@@ -17,4 +18,10 @@
 
 .Total {
 
+}
+
+@media screen and (max-width: $desktopMedia) {
+  .Total {
+    display: none;
+  }
 }
