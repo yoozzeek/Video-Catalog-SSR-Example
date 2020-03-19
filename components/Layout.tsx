@@ -7,12 +7,48 @@ export default function Layout(props) {
   return (
     <div className={styles.Wrapper}>
       <Head>
-        <title>OZEEX</title>
+        <title>
+          Free Porn, Sex Videos & Porn Tube Movies | OZEEX - XXX Porn Hub
+        </title>
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width"
           key="viewport"
         />
+
+        <meta
+          name="title"
+          content="Free Porn, Sex Videos & Porn Tube Movies | OZEEX - XXX Porn Hub"
+        />
+        <meta
+          name="description"
+          content="Ozeex.com - 15+ million free porn videos from the most popular porn tube sites, e.g., PornHub, RedTube, YouPorn, Tube8, etc. New videos added every minute!"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ozeex.com/en" />
+        <meta
+          property="og:title"
+          content="Free Porn, Sex Videos & Porn Tube Movies | OZEEX - XXX Porn Hub"
+        />
+        <meta
+          property="og:description"
+          content="Ozeex.com - 15+ million free porn videos from the most popular porn tube sites, e.g., PornHub, RedTube, YouPorn, Tube8, etc. New videos added every minute!"
+        />
+        <meta property="og:image" content="" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.ozeex.com/en" />
+        <meta
+          property="twitter:title"
+          content="Free Porn, Sex Videos & Porn Tube Movies | OZEEX - XXX Porn Hub"
+        />
+        <meta
+          property="twitter:description"
+          content="Ozeex.com - 15+ million free porn videos from the most popular porn tube sites, e.g., PornHub, RedTube, YouPorn, Tube8, etc. New videos added every minute!"
+        />
+        <meta property="twitter:image" content="" />
+
         <link
           href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
           rel="stylesheet"
