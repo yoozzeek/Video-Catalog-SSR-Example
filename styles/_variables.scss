@@ -6,7 +6,9 @@ $black: black;
 $gray1: #424245;
 $gray2: #646464;
 $gray3: #2C2C2F;
-$red: #F3075F;
+$danger: #F3075F;
+$primary: #0959CF;
+$success: #32A567;
 
 /*
  * Font sizes
@@ -20,5 +22,10 @@ $smallLineHeight: 12px;
  * Other variables
  */
 $baseIdent: 6px;
-$containerPadding: 0.6rem;
+$containerIdent: 0.6rem;
 $baseBorderRadius: 4px;
+
+/*
+ * Media sizes
+ */
+$desktopMedia: 460px;
