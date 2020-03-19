@@ -45,8 +45,10 @@ const CardSlider: React.FC<ICardSliderProps> = ({ itemId, pictures }) => {
     }
   }, [currentSlideIndex])
 
-  function startSlideShow() {
-    indexContext.setLaunchedSlideShowId(itemId)
+  function toggleSlideShow() {
+    indexContext.setLaunchedSlideShowId(
+      indexContext.launchedSlideShowId === itemId ? null : itemId
+    )
   }
 
   return (
@@ -54,7 +56,7 @@ const CardSlider: React.FC<ICardSliderProps> = ({ itemId, pictures }) => {
       className={styles.Image}
       alt={`${picture.id}`}
       src={picture.path}
-      onClick={startSlideShow}
+      onClick={toggleSlideShow}
     />
   )
 }
