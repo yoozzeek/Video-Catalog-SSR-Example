@@ -1,57 +1,39 @@
-import React, {
-  MutableRefObject,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import * as React from 'react'
 import styles from './Card.module.scss'
 import { IItem } from '../interfaces'
-import { IndexContext } from '../../../pages'
 import CardTags from './CardTags'
 import CardSlider from './CardSlider'
+import useVideoCard from '../hooks/card'
+import { useRef } from 'react'
 
 interface IVideoCardProps {
   item: IItem
 }
 
+/**
+ * Card component is general part of video list
+ * might be collapsed, has different styles for
+ * desktop and mobile and shows base information
+ */
 const Card: React.FC<IVideoCardProps> = ({ item }) => {
-  const indexContext = useContext(IndexContext)
-  const [contentHeight, setContentHeight] = useState<number>(0)
-  const isCollapsedDetails = useMemo(
-    () => indexContext.collapsedCardId === item.id,
-    [indexContext.collapsedCardId]
-  )
-
-  // Elements refs
+  // Define elements refs
   const descriptionRef = useRef(null)
   const tagsRef = React.createRef<HTMLDivElement>()
   const pornstarsRef = React.createRef<HTMLDivElement>()
   const webcamsRef = React.createRef<HTMLDivElement>()
 
-  useEffect(() => {
-    if (isCollapsedDetails) {
-      const totalHeight = [descriptionRef, tagsRef, webcamsRef, pornstarsRef]
-        .filter(el => el.current)
-        .reduce((memo: number, el: MutableRefObject<HTMLElement>) => {
-          memo += el.current.offsetHeight
-          return memo
-        }, 21)
-
-      setContentHeight(totalHeight)
-    }
-
-    // setContentHeight(0)
-  }, [isCollapsedDetails])
+  // Use video card hook
+  const { isCollapsedDetails, collapseDetails, contentHeight } = useVideoCard(
+    item,
+    descriptionRef,
+    tagsRef,
+    pornstarsRef,
+    webcamsRef
+  )
 
   const cardClasses = `${styles.Wrapper} ${
     isCollapsedDetails ? styles.DetailsCollapsed : ''
   }`
-
-  function collapseDetails() {
-    indexContext.setCollapsedCardId(isCollapsedDetails ? null : item.id)
-  }
 
   return (
     <article className={cardClasses}>

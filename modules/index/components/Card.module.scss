@@ -101,6 +101,9 @@
   background-repeat: no-repeat;
 }
 
+/**
+ * Mobile styles
+ */
 @media screen and (max-width: $desktopMedia) {
   .Wrapper {
     margin: $baseIdent 0;
@@ -115,14 +118,26 @@
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: 99;
 
       .CloseButton {
         display: inline-block;
+      }
+
+      .Meta {
+        padding: 0;
+      }
+
+      .Description {
+        margin: $baseIdent 0;
       }
     }
   }
 }
 
+/**
+ * Desktop styles
+ */
 @media screen and (min-width: $desktopMedia) {
   .Wrapper {
     margin: $baseIdent;
