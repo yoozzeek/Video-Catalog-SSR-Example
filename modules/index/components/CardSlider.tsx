@@ -1,55 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import styles from './CardSlider.module.scss'
 import { IItemPicture } from '../interfaces'
-import { IndexContext } from '../../../pages'
+import useCardSlider from '../hooks/slider'
 
 interface ICardSliderProps {
   itemId: number
   pictures: IItemPicture[]
 }
 
+/**
+ * Slider component is a part of VideoCard
+ * can start/stop (toggle) slide show
+ * and gets global context for handle intervals
+ */
 const CardSlider: React.FC<ICardSliderProps> = ({ itemId, pictures }) => {
-  const indexContext = useContext(IndexContext)
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
-  const [picture, setPicture] = useState(
-    pictures[currentSlideIndex]
-      ? pictures[currentSlideIndex]
-      : { id: 0, path: '' }
-  )
-  const slideShowIsRunning = indexContext.launchedSlideShowId === itemId
-
-  useEffect(() => {
-    let interval
-
-    if (slideShowIsRunning) {
-      interval = setInterval(() => {
-        setCurrentSlideIndex(prevState => prevState + 1)
-      }, 1000)
-    }
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [slideShowIsRunning])
-
-  useEffect(() => {
-    if (slideShowIsRunning) {
-      let nextPicture = pictures[currentSlideIndex]
-
-      if (!nextPicture) {
-        setCurrentSlideIndex(0)
-        nextPicture = pictures[0]
-      }
-
-      setPicture(nextPicture)
-    }
-  }, [currentSlideIndex])
-
-  function toggleSlideShow() {
-    indexContext.setLaunchedSlideShowId(
-      indexContext.launchedSlideShowId === itemId ? null : itemId
-    )
-  }
+  const { picture, toggleSlideShow } = useCardSlider(itemId, pictures)
 
   return (
     <img
