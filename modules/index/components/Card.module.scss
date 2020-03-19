@@ -1,0 +1,164 @@
+@import "../../../styles/variables";
+
+.Wrapper {
+  flex: 1;
+  min-width: 240px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+
+  &.DetailsCollapsed {
+    .Content {
+      background-color: $black;
+    }
+
+    .Meta {
+      flex-direction: column;
+      padding: $baseIdent;
+
+      li {
+        margin-top: 14px;
+      }
+
+      .Added,
+      .Duration {
+        font-size: $baseFontSize;
+        line-height: $baseLineHeight;
+      }
+
+      .Source {
+        display: block;
+      }
+    }
+
+    .Description {
+      text-overflow: unset;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.ImageContainer {
+  margin: 0;
+}
+
+.ContentWrapper {
+
+}
+
+.Content {
+  padding: $baseIdent 0;
+}
+
+.Meta {
+  padding: $baseIdent 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+
+  .Added,
+  .Duration {
+    font-size: $smallFontSize;
+    line-height: $smallLineHeight;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  .Source {
+    display: none;
+  }
+}
+
+.Description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 0 $baseIdent 0;
+}
+
+.MoreInfo {
+  width: 100%;
+  background-color: $gray3;
+  border-radius: $baseBorderRadius;
+  color: $white;
+  padding: $baseIdent 0;
+  outline: 0;
+  border: none;
+}
+
+.CloseButton {
+  margin-bottom: 20px;
+  width: 16px;
+  height: 16px;
+  display: none;
+  float: right;
+  background-image: url("../../../public/closeIcon.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: $desktopMedia) {
+  .Wrapper {
+    margin: $baseIdent 0;
+
+    &.DetailsCollapsed {
+      margin: 0;
+      background-color: rgba($black, 0.9);
+      box-sizing: border-box;
+      padding: $containerIdent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .CloseButton {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $desktopMedia) {
+  .Wrapper {
+    margin: $baseIdent;
+
+    &.DetailsCollapsed {
+      background-color: $black;
+      border-right-color: $danger;
+      border-left-color: $danger;
+      border-top-color: $danger;
+      border-bottom: none;
+
+      .ContentWrapper {
+        &:before {
+          background-color: $black;
+          position: relative;
+          display: block;
+          height: 2px;
+          width: 100%;
+          content: ' ';
+          z-index: 9;
+          top: 2px;
+        }
+      }
+
+      .Content {
+        position: absolute;
+        border: 2px solid $danger;
+        box-sizing: border-box;
+        padding: $baseIdent;
+        width: 100%;
+        left: 0;
+      }
+
+      .Meta {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
