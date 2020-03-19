@@ -4,4 +4,6 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json /usr/src/app/
 RUN npm install
 COPY ./ /usr/src/app/
-CMD ["npm", "run", "dev"]
+RUN npm run build
+CMD ["npm", "run", "start"]
+

@@ -9,6 +9,10 @@ interface ICardTagsProps {
   isCollapsedDetails: boolean
 }
 
+/**
+ * CardTags is common component for all
+ * tags lists with custom labels and colors
+ */
 const CardTags = React.forwardRef<HTMLDivElement, ICardTagsProps>(
   (
     {
