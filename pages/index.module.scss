@@ -3,8 +3,12 @@
 .VideosList {
   display: flex;
   flex-wrap: wrap;
-  padding: $containerPadding;
-  background-color: $gray1;
+  margin: $containerIdent;
   overflow: hidden;
-  position: relative;
+}
+
+@media screen and (min-width: $desktopMedia) {
+  .VideosList {
+    position: relative;
+  }
 }
