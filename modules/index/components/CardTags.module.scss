@@ -23,6 +23,7 @@
     background: linear-gradient(90deg, rgba($gray1, 0.3) 25%, rgba($gray1, 0.6) 60%, rgba($gray1, 1) 80%);
     position: absolute;
     right: 0;
+    top: 0;
   }
 }
 
@@ -31,8 +32,6 @@
 }
 
 .Tag {
-  display: flex;
-  align-items: center;
   border-radius: $baseBorderRadius;
   line-height: 1;
   white-space: pre;
