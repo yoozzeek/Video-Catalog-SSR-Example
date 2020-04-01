@@ -36,7 +36,12 @@ const Card: React.FC<IVideoCardProps> = ({ item }) => {
   }`
 
   return (
-    <article className={cardClasses}>
+    <article
+      className={cardClasses}
+      style={{
+        marginBottom: isCollapsedDetails ? contentHeight : 'auto',
+      }}
+    >
       <i className={styles.CloseButton} onClick={collapseDetails} />
 
       <div className={styles.ImageContainer}>
@@ -55,12 +60,7 @@ const Card: React.FC<IVideoCardProps> = ({ item }) => {
         </ul>
       </div>
 
-      <div
-        className={styles.ContentWrapper}
-        style={{
-          height: isCollapsedDetails ? contentHeight : 'auto',
-        }}
-      >
+      <div className={styles.ContentWrapper}>
         <div className={styles.Content}>
           <p ref={descriptionRef} className={styles.Description}>
             {isCollapsedDetails && <strong>Description:</strong>}{' '}

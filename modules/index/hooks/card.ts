@@ -2,6 +2,7 @@ import {
   MutableRefObject,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from 'react'
@@ -13,6 +14,9 @@ export interface IUseVideoCardOutput {
   isCollapsedDetails: boolean
   collapseDetails(): void
 }
+
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export default function useVideoCard(
   item: IItem,
@@ -30,7 +34,7 @@ export default function useVideoCard(
 
   // Watch to isCollapsed changes and
   // update the content height
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isCollapsedDetails) {
       const totalHeight = [descriptionRef, tagsRef, webcamsRef, pornstarsRef]
         .filter(el => el.current)
