@@ -6,7 +6,7 @@ import { ISearchData } from '../modules/index/interfaces'
 import Layout from '../components/Layout'
 import IndexMeta from '../modules/index/components/Meta'
 import Card from '../modules/index/components/Card'
-import IndexContextWrapper from '../modules/index/context';
+import IndexContextWrapper from '../modules/index/context'
 
 /**
  * Index page component
