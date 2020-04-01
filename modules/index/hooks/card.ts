@@ -51,6 +51,7 @@ export default function useVideoCard(
 
   function collapseDetails() {
     indexContext.setCollapsedCardId(isCollapsedDetails ? null : item.id)
+    indexContext.setLaunchedSlideShowId(item.id)
   }
 
   return {
