@@ -1,6 +1,8 @@
-# Video results
+# Video catalog results
 Main page of video portal written with Next.js (based on React) framework. It's ready to work in production,
 many enterprise companies like Twitch, Nike, etc are using similar tech stack for their projects.<br>
+
+ > ℹ️ This was a test task completed as part of the interview process for a senior frontend role at an adult content search engine project.
 
 ### Run in dev mode
 1. Run `npm install` for install dependencies<br>
